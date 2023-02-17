@@ -24,7 +24,13 @@ hover.forEach((div) => {
     });
 });
 
-let userNumber = prompt("How many squares per side would you like? The maximum amount is 100.");
+let userNumber;
+do
+{
+    let userPrompt = prompt("How many squares per side would you like? The maximum amount is 100. (Enter a number)");
+    userNumber = userPrompt;
+}
+while(typeof(userNumber) != "number");
 
 function removeGrid()
 {
