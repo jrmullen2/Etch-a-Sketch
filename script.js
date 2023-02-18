@@ -1,4 +1,4 @@
-const body = document.querySelector("body");
+const container = document.querySelector("#container");
 
 for(let i = 0; i < 16; i++)
 {
@@ -12,7 +12,7 @@ for(let i = 0; i < 16; i++)
 
         newDiv.classList.add("hover");
 
-        body.appendChild(newDiv);
+        container.appendChild(newDiv);
     }
 }
 
@@ -24,13 +24,13 @@ hover.forEach((div) => {
     });
 });
 
-let userNumber;
-do
-{
-    let userPrompt = prompt("How many squares per side would you like? The maximum amount is 100. (Enter a number)");
-    userNumber = userPrompt;
-}
-while(typeof(userNumber) != "number");
+const button = document.querySelector("button");
+button.addEventListener("click", () => {
+    let userNumber = prompt("How many squares per side would you like? The maximum amount is 100. (Enter a number)");
+    removeGrid();
+    createGrid(userNumber);
+});
+
 
 function removeGrid()
 {
@@ -41,8 +41,9 @@ function removeGrid()
             body.removeChild(newDiv);
         }
     }
+    return;
 }
-function userGrid(number)
+function createGrid(number)
 {
     for(let k = 0; k < number; k++)
     {
@@ -52,9 +53,8 @@ function userGrid(number)
             let pUser = document.createElement("p");
             userDiv.appendChild(pUser);
             userDiv.classList.add("hover");
-            body.appendChild(newDiv);
+            container.appendChild(newDiv);
         }   
     }
+    return;
 }
-removeGrid();
-userGrid(userNumber);
