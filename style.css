@@ -5,4 +5,5 @@
     grid-template-rows: repeat(16, auto); 
     width: 960px;
     height: 840px; 
+   overflow: scroll;
 }

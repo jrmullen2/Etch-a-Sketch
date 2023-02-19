@@ -26,7 +26,13 @@ hover.forEach((div) => {
 
 const button = document.querySelector("button");
 button.addEventListener("click", () => {
-    let userNumber = prompt("How many squares per side would you like? The maximum amount is 100. (Enter a number)");
+    let userPrompt = prompt("How many squares per side would you like? The maximum amount is 100. (Enter a number)");
+    userNumber = parseInt(userPrompt);
+    if(userNumber > 100 || userNumber < 1 || isNaN(userNumber))
+    {
+        alert("This is an invalid value. Please try again")
+        return;
+    }
     removeGrid();
     createGrid(userNumber);
 });
@@ -38,7 +44,8 @@ function removeGrid()
     {
         for(let h = 0; h < 16; h++)
         {
-            body.removeChild(newDiv);
+            let oldDiv = document.querySelector(".hover");
+            container.removeChild(oldDiv);
         }
     }
     return;
@@ -52,9 +59,15 @@ function createGrid(number)
             let userDiv = document.createElement("div");
             let pUser = document.createElement("p");
             userDiv.appendChild(pUser);
-            userDiv.classList.add("hover");
-            container.appendChild(newDiv);
+            userDiv.classList.add("hover2");
+            container.appendChild(userDiv);
         }   
     }
+    const hover2 = document.querySelectorAll(".hover2");
+    hover2.forEach((div) => {
+        div.addEventListener('mouseenter', () => {
+            div.style.backgroundColor = "black";
+        });
+    });
     return;
 }
