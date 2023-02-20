@@ -1,22 +1,25 @@
 const container = document.querySelector("#container");
 
-for(let i = 0; i < 16; i++)
+let containerChildren = [];
+
+for(let i = 0; i < 256; i++)
 {
-    for(let j = 0; j < 16; j++)
-    {
-        let newDiv = document.createElement("div");
+    
+    let newDiv = document.createElement("div");
+    
+    containerChildren[i] = newDiv;
 
-        let p = document.createElement("p");
+    let p = document.createElement("p");
 
-        newDiv.appendChild(p);
+    newDiv.appendChild(p);
 
-        newDiv.classList.add("hover");
+    newDiv.classList.add("hover");
 
-        container.appendChild(newDiv);
-    }
+    container.appendChild(newDiv);
+    
 }
 
-const hover = document.querySelectorAll(".hover");
+let hover = document.querySelectorAll(".hover");
 
 hover.forEach((div) => {
     div.addEventListener('mouseenter', () => {
@@ -40,31 +43,28 @@ button.addEventListener("click", () => {
 
 function removeGrid()
 {
-    for(let g = 0; g < 16; g++)
+    for(let g = 0; g < hover.length; g++)
     {
-        for(let h = 0; h < 16; h++)
-        {
-            let oldDiv = document.querySelector(".hover");
-            container.removeChild(oldDiv);
-        }
+        container.removeChild(containerChildren[g]);
     }
     return;
 }
 function createGrid(number)
 {
-    for(let k = 0; k < number; k++)
+    document.getElementById("container").style.gridTemplateColumns = `repeat(${number}, auto)`;
+    document.getElementById("container").style.gridTemplateRows = `repeat(${number}, auto)`;
+    for(let k = 0; k < number ** 2; k++)
     {
-        for(let h = 0; h < number; h++)
-        {
-            let userDiv = document.createElement("div");
-            let pUser = document.createElement("p");
-            userDiv.appendChild(pUser);
-            userDiv.classList.add("hover2");
-            container.appendChild(userDiv);
-        }   
+        let userDiv = document.createElement("div");
+        containerChildren[k] = userDiv;
+        let pUser = document.createElement("p");
+        userDiv.appendChild(pUser);
+        userDiv.classList.add("hover");
+        container.appendChild(userDiv);  
     }
-    const hover2 = document.querySelectorAll(".hover2");
-    hover2.forEach((div) => {
+    hover = document.querySelectorAll(".hover");
+    console.log(hover.length);
+    hover.forEach((div) => {
         div.addEventListener('mouseenter', () => {
             div.style.backgroundColor = "black";
         });
