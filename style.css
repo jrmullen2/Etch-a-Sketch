@@ -1,9 +1,55 @@
 
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.title {
+    color:blueviolet;
+    font-size: 48px;
+    text-align: center;
+}
 #container {
     display: grid;
     grid-template-columns: repeat(16, auto);
     grid-template-rows: repeat(16, auto); 
-    width: 960px;
-    height: 840px; 
-   overflow: scroll;
+    width: 480px;
+    height: 480px; 
+    overflow: auto;
+    border-width: 4px;
+    border-style: solid;
+    border-color: black;   
+}
+.div {
+    display: flex;
+    justify-content: center;
+    
+}
+#grid {
+    background-color: olivedrab;
+    border-radius: 4px;
+    border-color: black;
+    border-width: 2px;
+    font-size: 24px;
+}
+#black {
+    background-color: gainsboro;
+    border-radius: 4px;
+    border-color: black;
+    border-width: 2px;
+    font-size: 24px;
+}
+#multicolor {
+    background-color: palevioletred;
+    border-radius: 4px;
+    border-color: black;
+    border-width: 2px;
+    font-size: 24px;
+}
+.buttonContainer1, .buttonContainer2 {
+    display: flex;
+    justify-content: center;
+}
+.buttonContainer2 {
+    gap: 250px;
 }
