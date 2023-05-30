@@ -2,23 +2,24 @@ const container = document.querySelector("#container");
 
 let containerChildren = [];
 
+let isBlack = true;
+
+let isColor = false;
+
 //Creates Original 16 by 16 grid
 
-for(let i = 0; i < 256; i++)
-{
-    
-    let newDiv = document.createElement("div");
-    
-    containerChildren[i] = newDiv;
+for (let i = 0; i < 256; i++) {
+  let newDiv = document.createElement("div");
 
-    let p = document.createElement("p");
+  containerChildren[i] = newDiv;
 
-    newDiv.appendChild(p);
+  let p = document.createElement("p");
 
-    newDiv.classList.add("hover");
+  newDiv.appendChild(p);
 
-    container.appendChild(newDiv);
-    
+  newDiv.classList.add("hover");
+
+  container.appendChild(newDiv);
 }
 
 //Making each div change background color when hovered over
@@ -26,94 +27,114 @@ for(let i = 0; i < 256; i++)
 let hover = document.querySelectorAll(".hover");
 
 hover.forEach((div) => {
+  div.addEventListener("mouseenter", () => {
+    let redValue = Math.floor(Math.random() * 256);
 
-    div.addEventListener('mouseenter', () => {
+    let blueValue = Math.floor(Math.random() * 256);
 
-        let redValue = Math.floor(Math.random() * 256);
+    let greenValue = Math.floor(Math.random() * 256);
 
-        let blueValue = Math.floor(Math.random() * 256);
-
-        let greenValue = Math.floor(Math.random() * 256);
-
-        div.style.backgroundColor = `rgb(${redValue}, ${blueValue}, ${greenValue}`;
-
-    });
-
+    div.style.backgroundColor = `rgb(${redValue}, ${blueValue}, ${greenValue}`;
+  });
 });
 
 //Providing button with functionality
 
-const button = document.querySelector("button");
+const makeButton = document.getElementById("make");
 
-button.addEventListener("click", () => {
+makeButton.addEventListener("click", () => {
+  let userPrompt = prompt(
+    "How many squares per side would you like? The maximum amount is 100. (Enter a number)"
+  );
 
-    let userPrompt = prompt("How many squares per side would you like? The maximum amount is 100. (Enter a number)");
+  userNumber = parseInt(userPrompt);
 
-    userNumber = parseInt(userPrompt);
+  if (userNumber > 100 || userNumber < 1 || isNaN(userNumber)) {
+    alert("This is an invalid value. Please try again");
 
-    if(userNumber > 100 || userNumber < 1 || isNaN(userNumber))
-    {
-        alert("This is an invalid value. Please try again");
+    return;
+  }
+  removeGrid();
 
-        return;
-    }
-    removeGrid();
-
-    createGrid(userNumber);
+  createGrid(userNumber);
 });
 
+const blackButton = document.getElementById("black");
 
-function removeGrid()
-{
-    for(let g = 0; g < hover.length; g++)
-    {
-        container.removeChild(containerChildren[g]);
-    }
-    return;
+const colorButton = document.getElementById("color");
+
+blackButton.addEventListener("click", () => {
+  hover.forEach((div) => {
+    div.style.backgroundColor = "white";
+    div.addEventListener("mouseenter", () => {
+      div.style.backgroundColor = "black";
+    });
+  });
+});
+colorButton.addEventListener("click", () => {
+  hover.forEach((div) => {
+    div.style.backgroundColor = "white";
+    div.addEventListener("mouseenter", () => {
+      let redValue = Math.floor(Math.random() * 256);
+
+      let blueValue = Math.floor(Math.random() * 256);
+
+      let greenValue = Math.floor(Math.random() * 256);
+
+      div.style.backgroundColor = `rgb(${redValue}, ${blueValue}, ${greenValue}`;
+    });
+  });
+});
+
+function removeGrid() {
+  for (let g = 0; g < hover.length; g++) {
+    container.removeChild(containerChildren[g]);
+  }
+  return;
 }
 
-function createGrid(number)
-{
-    //Changes the number of rows and columns in grid
+function createGrid(number) {
+  //Changes the number of rows and columns in grid
 
-    document.getElementById("container").style.gridTemplateColumns = `repeat(${number}, auto)`;
+  document.getElementById(
+    "container"
+  ).style.gridTemplateColumns = `repeat(${number}, auto)`;
 
-    document.getElementById("container").style.gridTemplateRows = `repeat(${number}, auto)`;
-    for(let k = 0; k < number ** 2; k++)
-    {
-        let userDiv = document.createElement("div");
+  document.getElementById(
+    "container"
+  ).style.gridTemplateRows = `repeat(${number}, auto)`;
 
-        containerChildren[k] = userDiv;
+  for (let k = 0; k < number ** 2; k++) {
+    let userDiv = document.createElement("div");
 
-        let pUser = document.createElement("p");
+    containerChildren[k] = userDiv;
 
-        userDiv.appendChild(pUser);
+    let pUser = document.createElement("p");
 
-        userDiv.classList.add("hover");
+    userDiv.appendChild(pUser);
 
-        container.appendChild(userDiv);  
-    }
+    userDiv.classList.add("hover");
 
-    hover = document.querySelectorAll(".hover");
+    container.appendChild(userDiv);
+  }
 
-    console.log(hover.length);
+  hover = document.querySelectorAll(".hover");
 
-    hover.forEach((div) => {
+  console.log(hover.length);
 
-        div.addEventListener('mouseenter', () => {
+  hover.forEach((div) => {
+    div.addEventListener("mouseenter", () => {
+      let redValue = Math.floor(Math.random() * 256);
 
-            let redValue = Math.floor(Math.random() * 256);
+      let blueValue = Math.floor(Math.random() * 256);
 
-            let blueValue = Math.floor(Math.random() * 256);
+      let greenValue = Math.floor(Math.random() * 256);
 
-            let greenValue = Math.floor(Math.random() * 256);
+      div.style.backgroundColor = `rgb(${redValue}, ${blueValue}, ${greenValue}`;
 
-            div.style.backgroundColor = `rgb(${redValue}, ${blueValue}, ${greenValue}`;
-
-            document.div.style.filter = `brightness(${brightnessPercent}%)`;
-
-        });
+      document.div.style.filter = `brightness(${brightnessPercent}%)`;
     });
-        
-    return;
+  });
+
+  return;
 }
