@@ -17,10 +17,7 @@ let hover = document.querySelectorAll(".hover");
 
 hover.forEach((div) => {
   div.addEventListener("mouseenter", () => {
-    let redValue = Math.floor(Math.random() * 256);
-    let blueValue = Math.floor(Math.random() * 256);
-    let greenValue = Math.floor(Math.random() * 256);
-    div.style.backgroundColor = `rgb(${redValue}, ${blueValue}, ${greenValue}`;
+    div.style.backgroundColor = "black";
   });
 });
 
@@ -90,10 +87,7 @@ function createGrid(number) {
   hover = document.querySelectorAll(".hover");
   hover.forEach((div) => {
     div.addEventListener("mouseenter", () => {
-      let redValue = Math.floor(Math.random() * 256);
-      let blueValue = Math.floor(Math.random() * 256);
-      let greenValue = Math.floor(Math.random() * 256);
-      div.style.backgroundColor = `rgb(${redValue}, ${blueValue}, ${greenValue}`;
+      div.style.backgroundColor = "black";
     });
   });
   return;
