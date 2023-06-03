@@ -28,8 +28,17 @@ body {
 }
 .buttonContainer {
   display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#colorButtons {
+  display: flex;
   justify-content: center;
   gap: 20px;
+}
+#createContainer {
+  display: flex;
+  justify-content: center;
 }
 button {
   border-radius: 8px;
