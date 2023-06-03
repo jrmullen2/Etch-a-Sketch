@@ -31,26 +31,25 @@ body {
   justify-content: center;
   gap: 20px;
 }
+button {
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  font-size: 24px;
+}
 #make {
   background-color: blueviolet;
   color: white;
-  border-radius: 8px;
   border-color: black;
-  border: none;
-  font-size: 24px;
 }
 #black {
   background-color: black;
   color: white;
-  border-radius: 8px;
-  border: none;
-  font-weight: bold;
-  font-size: 24px;
 }
 #color {
   background-color: pink;
-  border-radius: 8px;
-  border: none;
-  font-weight: bold;
-  font-size: 24px;
+}
+#colorFade {
+  background-color: darkturquoise;
+  color: white;
 }
