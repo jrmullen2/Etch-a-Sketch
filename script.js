@@ -105,12 +105,8 @@ function removeGrid() {
 
 function createGrid(number) {
   //Changes the number of rows and columns in grid
-  document.getElementById(
-    "container"
-  ).style.gridTemplateColumns = `repeat(${number}, auto)`;
-  document.getElementById(
-    "container"
-  ).style.gridTemplateRows = `repeat(${number}, auto)`;
+  container.style.gridTemplateColumns = `repeat(${number}, auto)`;
+  container.style.gridTemplateRows = `repeat(${number}, auto)`;
   for (let k = 0; k < number ** 2; k++) {
     let userDiv = document.createElement("div");
     containerChildren[k] = userDiv;

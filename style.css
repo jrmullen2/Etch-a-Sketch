@@ -5,7 +5,7 @@ body {
   background: url(images/pawel-czerwinski-3k9PGKWt7ik-unsplash.jpg);
   background-size: cover;
 }
-.title {
+#title {
   color: blueviolet;
   font-size: 48px;
   text-align: center;
@@ -22,11 +22,11 @@ body {
   border-color: black;
   background-color: white;
 }
-.div {
+#div {
   display: flex;
   justify-content: center;
 }
-.buttonContainer {
+#buttonContainer {
   display: flex;
   flex-direction: column;
   gap: 15px;
